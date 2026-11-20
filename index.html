@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js');
+</script>
+<title>JaimByte – em breve</title>
+<meta name="description" content="Celulares, computadores e periféricos. A JaimByte está chegando.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🔌</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDF0F5;
+    --ink: #0E1B38;
+    --muted: #4A5877;
+    --bit-off: #D3D9E6;
+    --bit-on: #1F4BFF;
+    --bit-on-text: #FFFFFF;
+    --bit-off-text: #8592AE;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0A1226;
+      --ink: #EAF0FF;
+      --muted: #9AA8C7;
+      --bit-off: #17223F;
+      --bit-on: #4C73FF;
+      --bit-on-text: #08102A;
+      --bit-off-text: #52618A;
+      color-scheme: dark;
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Familjen Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+  }
+  main { width: 100%; max-width: 760px; }
+
+  .bits {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: clamp(6px, 1.6vw, 12px);
+    margin-bottom: clamp(32px, 7vw, 56px);
+  }
+  .bit {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background: var(--bit-on);
+    color: var(--bit-on-text);
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-size: clamp(16px, 4.5vw, 32px);
+    font-variant-numeric: tabular-nums;
+    transition: background .3s ease-out, color .3s ease-out, transform .3s ease-out;
+  }
+  .js .bit:not(.on) {
+    background: var(--bit-off);
+    color: var(--bit-off-text);
+  }
+  .bit.on.trava { transform: scale(1.12); }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(52px, 14vw, 120px);
+    line-height: .95;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+  }
+  .lead {
+    margin: 28px 0 0;
+    max-width: 34ch;
+    font-size: clamp(20px, 3.4vw, 28px);
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  .info {
+    margin: 20px 0 0;
+    max-width: 52ch;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .som {
+    position: fixed;
+    top: calc(env(safe-area-inset-top, 0px) + 16px);
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    font: 500 15px/1 "Familjen Grotesk", system-ui, sans-serif;
+    cursor: pointer;
+  }
+  .som:hover { background: var(--ink); color: var(--bg); }
+  .som:focus-visible { outline: 3px solid var(--bit-on); outline-offset: 3px; }
+  .som svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .som .onda { display: none; }
+  .som[aria-pressed="true"] .onda { display: inline; }
+  .som[aria-pressed="true"] .mudo { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bit { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="bits" role="img" aria-label="Número binário 10110101">
+    <div class="bit" style="--i:0">1</div>
+    <div class="bit" style="--i:1">0</div>
+    <div class="bit" style="--i:2">1</div>
+    <div class="bit" style="--i:3">1</div>
+    <div class="bit" style="--i:4">0</div>
+    <div class="bit" style="--i:5">1</div>
+    <div class="bit" style="--i:6">0</div>
+    <div class="bit" style="--i:7">1</div>
+  </div>
+  <h1>JaimByte</h1>
+  <p class="lead">Celulares, computadores e periféricos. Em breve.</p>
+  <p class="info">Estamos montando a loja. Começamos online e depois abrimos a loja física, para atender Almirante Tamandaré e toda a região de Curitiba, no Paraná.</p>
+</main>
+
+<button class="som" id="som" type="button" aria-pressed="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M11 5 6 9H3v6h3l5 4z"/>
+    <path class="onda" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>
+    <path class="mudo" d="m16 9 5 6M21 9l-5 6"/>
+  </svg>
+  <span id="somTxt">Ligar som</span>
+</button>
+
+<script>
+(function () {
+  var btn = document.getElementById('som');
+  var txt = document.getElementById('somTxt');
+  var ctx = null, master = null, pad = [], timer = null, ligado = false;
+
+  function montar() {
+    var AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return false;
+    ctx = new AC();
+    master = ctx.createGain();
+    master.gain.value = 0;
+    master.connect(ctx.destination);
+
+    // Base: acorde grave suave com filtro que abre e fecha devagar
+    var filtro = ctx.createBiquadFilter();
+    filtro.type = 'lowpass';
+    filtro.frequency.value = 600;
+    filtro.Q.value = 3;
+    var padGain = ctx.createGain();
+    padGain.gain.value = 0.16;
+    filtro.connect(padGain);
+    padGain.connect(master);
+
+    [55, 82.41, 110, 164.81].forEach(function (f, i) {
+      var o = ctx.createOscillator();
+      o.type = i % 2 ? 'triangle' : 'sawtooth';
+      o.frequency.value = f;
+      o.detune.value = (i - 1.5) * 6;
+      o.connect(filtro);
+      o.start();
+      pad.push(o);
+    });
+
+    var lfo = ctx.createOscillator();
+    var lfoGain = ctx.createGain();
+    lfo.frequency.value = 0.07;
+    lfoGain.gain.value = 350;
+    lfo.connect(lfoGain);
+    lfoGain.connect(filtro.frequency);
+    lfo.start();
+    pad.push(lfo);
+
+    // Eco para os "bips" ficarem espaçados e eletrônicos
+    var eco = ctx.createDelay(1.5);
+    eco.delayTime.value = 0.42;
+    var fb = ctx.createGain();
+    fb.gain.value = 0.45;
+    var ecoFiltro = ctx.createBiquadFilter();
+    ecoFiltro.type = 'lowpass';
+    ecoFiltro.frequency.value = 2200;
+    eco.connect(ecoFiltro);
+    ecoFiltro.connect(fb);
+    fb.connect(eco);
+    ecoFiltro.connect(master);
+    ctx.bipesEco = eco;
+    return true;
+  }
+
+  var notas = [440, 523.25, 659.25, 783.99, 880, 1046.5];
+
+  function bip() {
+    if (!ligado) return;
+    if (ctx.state !== 'running') { timer = setTimeout(bip, 500); return; }
+    var t = ctx.currentTime;
+    var o = ctx.createOscillator();
+    var g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.value = notas[Math.floor(Math.random() * notas.length)];
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.07, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 1.1);
+    o.connect(g);
+    g.connect(master);
+    g.connect(ctx.bipesEco);
+    o.start(t);
+    o.stop(t + 1.2);
+    timer = setTimeout(bip, 1400 + Math.random() * 2800);
+  }
+
+  function ligar() {
+    if (!ctx && !montar()) return;
+    ctx.resume();
+    ligado = true;
+    var t = ctx.currentTime;
+    master.gain.cancelScheduledValues(t);
+    master.gain.setValueAtTime(master.gain.value, t);
+    master.gain.linearRampToValueAtTime(0.7, t + 2);
+    clearTimeout(timer);
+    timer = setTimeout(bip, 800);
+    btn.setAttribute('aria-pressed', 'true');
+    txt.textContent = 'Desligar som';
+  }
+
+  function desligar() {
+    ligado = false;
+    clearTimeout(timer);
+    if (ctx) {
+      var t = ctx.currentTime;
+      master.gain.cancelScheduledValues(t);
+      master.gain.setValueAtTime(master.gain.value, t);
+      master.gain.linearRampToValueAtTime(0, t + 0.6);
+    }
+    btn.setAttribute('aria-pressed', 'false');
+    txt.textContent = 'Ligar som';
+  }
+
+  btn.addEventListener('click', function () {
+    if (ligado && ctx && ctx.state !== 'running') { ctx.resume(); return; }
+    if (ligado) desligar(); else ligar();
+  });
+
+  // Som já começa ligado. Navegadores só liberam áudio depois de um clique,
+  // toque ou tecla, então ele destrava na primeira interação com a página.
+  ligar();
+  var destravar = function (e) {
+    if (btn.contains(e.target)) return;
+    if (ctx && ligado) ctx.resume();
+    if (ctx && ctx.state === 'running') {
+      ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+        document.removeEventListener(ev, destravar, true);
+      });
+    }
+  };
+  ['pointerdown', 'keydown', 'touchstart'].forEach(function (ev) {
+    document.addEventListener(ev, destravar, true);
+  });
+
+  // Pausa o áudio quando a aba fica em segundo plano
+  document.addEventListener('visibilitychange', function () {
+    if (!ctx || !ligado) return;
+    if (document.hidden) { ctx.suspend(); clearTimeout(timer); }
+    else { ctx.resume(); timer = setTimeout(bip, 800); }
+  });
+})();
+</script>
+
+<script>
+// Os dígitos embaralham 0 e 1 e vão travando, da esquerda para a direita, até formar 10110101
+(function () {
+  if (!document.documentElement.classList.contains('js')) return;
+  var alvo = '10110101';
+  var bits = document.querySelectorAll('.bit');
+  var inicio = performance.now();
+  var travados = 0;
+
+  function quadro(agora) {
+    var dt = agora - inicio;
+    for (var i = 0; i < bits.length; i++) {
+      var el = bits[i];
+      if (el.classList.contains('on')) continue;
+      if (dt >= 600 + i * (3400 / 7)) {
+        el.textContent = alvo.charAt(i);
+        el.classList.add('on', 'trava');
+        setTimeout(function (e) { e.classList.remove('trava'); }, 300, el);
+        travados++;
+      } else if (Math.floor(dt / 70 + i) !== el._f) {
+        el._f = Math.floor(dt / 70 + i);
+        el.textContent = Math.random() < 0.5 ? '0' : '1';
+      }
+    }
+    if (travados < bits.length) requestAnimationFrame(quadro);
+  }
+  requestAnimationFrame(quadro);
+})();
+</script>
+</body>
+</html>
